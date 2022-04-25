@@ -31,7 +31,7 @@ const Register = () => {
       };
       setLoading(true);
       await axios
-        .post("https://login-and-register.herokuapp.com/register", Usuario)
+        .post("http://localhost:4000/register", Usuario)
         .then((res) => {
           const { data } = res;
           setMensaje(data.mensaje);
