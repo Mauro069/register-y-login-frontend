@@ -26,13 +26,14 @@ const Login = () => {
       };
       setLoading(true);
       await axios
-        .post("https://login-and-register.herokuapp.com/login", Usuario)
+        .post("http://localhost:4000/login", Usuario)
         .then((res) => {
           const { data } = res;
           setMensaje(data.mensaje);
           setTimeout(() => {
             setMensaje("");
-            navigate(`/welcome/${data?.usuario.id}`);
+            localStorage.setItem("token", data?.usuario.token);
+            navigate(`/welcome`);
           }, 1500);
         })
         .catch((error) => {
